@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
-        let tipPercentages = [0.18, 0.22, 0.25]
+        let tipPercentages = [0.15, 0.2, 0.25]
         let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         
         
