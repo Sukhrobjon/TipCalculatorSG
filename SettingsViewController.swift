@@ -9,6 +9,13 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    
+    @IBOutlet weak var segControl: UISegmentedControl!
+    var lowestTip: Float!
+    var midTip: Float!
+    var hihghestTip: Float!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
