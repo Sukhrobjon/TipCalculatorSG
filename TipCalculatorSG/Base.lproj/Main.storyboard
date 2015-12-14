@@ -254,10 +254,10 @@
             </objects>
             <point key="canvasLocation" x="9616" y="-456"/>
         </scene>
-        <!--View Controller-->
+        <!--Percentage View Controller-->
         <scene sceneID="sAH-Wj-is1">
             <objects>
-                <viewController id="8ui-Hq-jo7" sceneMemberID="viewController">
+                <viewController id="8ui-Hq-jo7" customClass="PercentageViewController" customModule="TipCalculatorSG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KNa-Bk-Ihj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

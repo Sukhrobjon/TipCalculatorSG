@@ -15,6 +15,7 @@
 		BC7E75421C127296001639BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7E75401C127296001639BA /* LaunchScreen.storyboard */; };
 		BC7E754D1C127296001639BA /* TipCalculatorSGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E754C1C127296001639BA /* TipCalculatorSGTests.swift */; };
 		BC7E75581C127296001639BA /* TipCalculatorSGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E75571C127296001639BA /* TipCalculatorSGUITests.swift */; };
+		BCE33D661C1E811400156E10 /* PercentageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE33D651C1E811400156E10 /* PercentageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		BC7E75531C127296001639BA /* TipCalculatorSGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalculatorSGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7E75571C127296001639BA /* TipCalculatorSGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculatorSGUITests.swift; sourceTree = "<group>"; };
 		BC7E75591C127296001639BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCE33D651C1E811400156E10 /* PercentageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				BC7E75391C127296001639BA /* ViewController.swift */,
 				BC7E753B1C127296001639BA /* Main.storyboard */,
 				BC7E753E1C127296001639BA /* Assets.xcassets */,
+				BCE33D651C1E811400156E10 /* PercentageViewController.swift */,
 				BC7E75401C127296001639BA /* LaunchScreen.storyboard */,
 				BC7E75431C127296001639BA /* Info.plist */,
 			);
@@ -261,6 +264,7 @@
 			files = (
 				BC7E753A1C127296001639BA /* ViewController.swift in Sources */,
 				BC7E75381C127296001639BA /* AppDelegate.swift in Sources */,
+				BCE33D661C1E811400156E10 /* PercentageViewController.swift in Sources */,
 				BC79803B1C129C4A00A49384 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
