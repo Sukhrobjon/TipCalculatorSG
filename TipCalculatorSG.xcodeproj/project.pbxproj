@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC79803B1C129C4A00A49384 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC79803A1C129C4A00A49384 /* SettingsViewController.swift */; };
 		BC7E75381C127296001639BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E75371C127296001639BA /* AppDelegate.swift */; };
 		BC7E753A1C127296001639BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E75391C127296001639BA /* ViewController.swift */; };
 		BC7E753D1C127296001639BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7E753B1C127296001639BA /* Main.storyboard */; };
@@ -36,7 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC79803A1C129C4A00A49384 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BC7E75341C127296001639BA /* TipCalculatorSG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalculatorSG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7E75371C127296001639BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC7E75391C127296001639BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 		BC7E752B1C127296001639BA = {
 			isa = PBXGroup;
 			children = (
-				BC79803A1C129C4A00A49384 /* SettingsViewController.swift */,
 				BC7E75361C127296001639BA /* TipCalculatorSG */,
 				BC7E754B1C127296001639BA /* TipCalculatorSGTests */,
 				BC7E75561C127296001639BA /* TipCalculatorSGUITests */,
@@ -265,7 +262,6 @@
 				BC7E753A1C127296001639BA /* ViewController.swift in Sources */,
 				BC7E75381C127296001639BA /* AppDelegate.swift in Sources */,
 				BCE33D661C1E811400156E10 /* PercentageViewController.swift in Sources */,
-				BC79803B1C129C4A00A49384 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

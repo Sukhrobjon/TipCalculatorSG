@@ -36,6 +36,11 @@ class ViewController: UIViewController {
         totalLabel.text = defaults.stringForKey("savedTotal")
         tipControl.selectedSegmentIndex = defaults.integerForKey("myPer")
         billField.becomeFirstResponder()
+        
+        
+        let date = NSDate().dateByAddingTimeInterval(1*60)
+        let timer = NSTimer(fireDate: date, interval: 0, target: self, selector: "clearBillAmount", userInfo: nil, repeats: false)
+        NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     
     }
     
@@ -84,7 +89,11 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
+
+    
+
 
     @IBAction func onEditingChanged(sender: AnyObject) {
         let tipPercentages = [0.15, 0.2, 0.25]
