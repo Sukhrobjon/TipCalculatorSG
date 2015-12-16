@@ -14,6 +14,10 @@ class PercentageViewController: UIViewController {
     
     @IBOutlet weak var tipEditorControl: UISlider!
     
+    var lowTip: Float!
+    var medTip: Float!
+    var highTip: Float!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
