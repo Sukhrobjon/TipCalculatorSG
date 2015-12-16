@@ -37,10 +37,6 @@ class ViewController: UIViewController {
         tipControl.selectedSegmentIndex = defaults.integerForKey("myPer")
         billField.becomeFirstResponder()
         
-        
-        let date = NSDate().dateByAddingTimeInterval(1*60)
-        let timer = NSTimer(fireDate: date, interval: 0, target: self, selector: "clearBillAmount", userInfo: nil, repeats: false)
-        NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     
     }
     
@@ -52,10 +48,6 @@ class ViewController: UIViewController {
             self.FadeControl.alpha = 1.0
             
         })
-        
-    
-        
-        
     
         
     }
@@ -103,6 +95,8 @@ class ViewController: UIViewController {
         let billAmount = NSString(string: billField.text!).doubleValue
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
+        
+        
         
         tipLabel.text = "$/(tip)"
         totalLabel.text = "$(total)"
