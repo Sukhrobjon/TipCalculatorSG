@@ -120,7 +120,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="9185" y="-624"/>
+            <point key="canvasLocation" x="9111" y="-605"/>
         </scene>
         <!--Percentages-->
         <scene sceneID="sAH-Wj-is1">
@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWE-Mi-iQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9584" y="-624"/>
+            <point key="canvasLocation" x="9523" y="-605"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gA9-Ii-w8v">
@@ -184,7 +184,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEG-ng-Wbl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8816" y="-624"/>
+            <point key="canvasLocation" x="8748" y="-624"/>
         </scene>
     </scenes>
 </document>
