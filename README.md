@@ -27,7 +27,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![walkthrough](testlicecaptipcalsg.gif)
+![walkthrough](test1calSG.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
