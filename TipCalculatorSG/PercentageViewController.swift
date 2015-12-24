@@ -14,22 +14,29 @@ class PercentageViewController: UIViewController {
     
     @IBOutlet weak var tipEditorControl: UISlider!
     
-    var lowTip: Float!
-    var medTip: Float!
-    var highTip: Float!
+    var lowTip: Double!
+    var medTip: Double!
+    var highTip: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         //TODO: read from the user defaults for the 3 tip percentages
+        
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
         //TODO: read the 3 tip values from the defaults
+        
         let lowTip = userDefaults.floatForKey("low_tip")
         let medTip = userDefaults.floatForKey("med_tip")
         let highTip = userDefaults.floatForKey("high_tip")
@@ -43,9 +50,13 @@ class PercentageViewController: UIViewController {
         let highTitle = Int(highTip * 100)
         
         //TODO: update the tipSelectorControl with the default tip values
+        
         tipSelectorControl.setTitle("\(lowTitle)%", forSegmentAtIndex: 0)
         tipSelectorControl.setTitle("\(medTitle)%", forSegmentAtIndex: 1)
         tipSelectorControl.setTitle("\(highTitle)%", forSegmentAtIndex: 2)
+        
+        
+        NSUserDefaults.standardUserDefaults().synchronize()
         print("view will appear")
     }
     
@@ -56,11 +67,18 @@ class PercentageViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        
+
+        
         print("view will disappear")
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+        
+        
+
+        
         print("view did disappear")
     }
     
