@@ -18,9 +18,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var FadeLabel: UILabel!
     @IBOutlet weak var FadeControl: UISegmentedControl!
     
-    var lowTip: Double!
-    var medTip: Double!
-    var highTip: Double!
+    var lowTip: Float!
+    var medTip: Float!
+    var highTip: Float!
 
     
     
@@ -146,6 +146,7 @@ class ViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         
         var tipPercentages = [0.15, 0.2, 0.25]
+        
         
         
         let savedLowTip = defaults.doubleForKey("low_tip")

@@ -14,9 +14,7 @@ class PercentageViewController: UIViewController {
     
     @IBOutlet weak var tipEditorControl: UISlider!
     
-    var lowTip: Double!
-    var medTip: Double!
-    var highTip: Double!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +53,8 @@ class PercentageViewController: UIViewController {
         tipSelectorControl.setTitle("\(medTitle)%", forSegmentAtIndex: 1)
         tipSelectorControl.setTitle("\(highTitle)%", forSegmentAtIndex: 2)
         
-        
         NSUserDefaults.standardUserDefaults().synchronize()
+        
         print("view will appear")
     }
     
@@ -91,6 +89,11 @@ class PercentageViewController: UIViewController {
     }
 
     @IBAction func tipEditorChanged(sender: AnyObject) {
+        
+        func roundFloatToTwoDigits(value: Float) -> Float {
+            return round(value * 100) / 100
+        }
+        
         //TODO: update the title of the tip selector 
         // to reflect the new tip amount 
         
