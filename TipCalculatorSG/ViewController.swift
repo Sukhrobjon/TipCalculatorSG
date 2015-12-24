@@ -18,12 +18,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var FadeLabel: UILabel!
     @IBOutlet weak var FadeControl: UISegmentedControl!
     
+    var lowTip: Double!
+    var medTip: Double!
+    var highTip: Double!
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nil.
         
         self.FadeLabel.alpha = 0
         self.FadeControl.alpha = 1
+        
         
         
         tipLabel.text = "$0.00"
@@ -37,8 +44,47 @@ class ViewController: UIViewController {
         tipControl.selectedSegmentIndex = defaults.integerForKey("myPer")
         billField.becomeFirstResponder()
         
-    
+        
     }
+
+    
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+       
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        //TODO: read the 3 tip values from the defaults
+        
+        let lowTip = userDefaults.doubleForKey("low_tip")
+        let medTip = userDefaults.doubleForKey("med_tip")
+        let highTip = userDefaults.doubleForKey("high_tip")
+        
+        print("\(lowTip)")
+        print("\(medTip)")
+        print("\(highTip)")
+        
+        let lowTitle = Int(lowTip * 100)
+        let medTitle = Int(medTip * 100)
+        let highTitle = Int(highTip * 100)
+        
+        //TODO: update the tipSelectorControl with the default tip values
+        
+        tipControl.setTitle("\(lowTitle)%", forSegmentAtIndex: 0)
+        tipControl.setTitle("\(medTitle)%", forSegmentAtIndex: 1)
+        tipControl.setTitle("\(highTitle)%", forSegmentAtIndex: 2)
+
+        
+
+//         NSUserDefaults.standardUserDefaults().synchronize()
+        
+        print("view will appear")
+    }
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -47,6 +93,13 @@ class ViewController: UIViewController {
             self.FadeLabel.alpha = 1.0
             self.FadeControl.alpha = 1.0
             
+            //TO DO: call the values from the settengs page
+            
+            
+            
+            
+
+            
         })
     
         
@@ -54,15 +107,14 @@ class ViewController: UIViewController {
 
     
     override func viewWillDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("View will disappear")
+        super.viewWillDisappear(animated)
+        
         let myText = billField.text
         let myTip = tipLabel.text
         let myTotal = totalLabel.text
         let selectPer = tipControl.selectedSegmentIndex
+
     
-    
-        
         
         NSUserDefaults.standardUserDefaults().setObject(myText, forKey: "savedAmt")
         NSUserDefaults.standardUserDefaults().setObject(myTip, forKey: "savedTip")
@@ -70,6 +122,8 @@ class ViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(selectPer, forKey: "myPer")
         
         NSUserDefaults.standardUserDefaults().synchronize()
+//
+        print("View will disappear")
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -88,9 +142,23 @@ class ViewController: UIViewController {
 
 
     @IBAction func onEditingChanged(sender: AnyObject) {
-        let tipPercentages = [0.15, 0.2, 0.25]
-        let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        var tipPercentages = [0.15, 0.2, 0.25]
+        
+        
+        let savedLowTip = defaults.doubleForKey("low_tip")
+        let savedMedTip = defaults.doubleForKey("med_tip")
+        let savedHighTip = defaults.doubleForKey("high_tip")
+        
+        if savedLowTip > 0.0 && savedMedTip > 0.0 && savedHighTip > 0.0 {
+            
+            tipPercentages = [ savedLowTip, savedMedTip, savedHighTip ]
+        }
+        
+        
+        let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         
         let billAmount = NSString(string: billField.text!).doubleValue
         let tip = billAmount * tipPercentage
@@ -99,7 +167,7 @@ class ViewController: UIViewController {
         
         
         tipLabel.text = "$/(tip)"
-        totalLabel.text = "$(total)"
+        totalLabel.text = "$/(total)"
         
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
