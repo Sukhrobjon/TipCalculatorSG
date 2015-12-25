@@ -90,9 +90,8 @@ class PercentageViewController: UIViewController {
 
     @IBAction func tipEditorChanged(sender: AnyObject) {
         
-        func roundFloatToTwoDigits(value: Float) -> Float {
-            return round(value * 100) / 100
-        }
+//        userDefaults.setFloat(round(newFloatValue*100)/100);, forKey:"low_tip")
+       
         
         //TODO: update the title of the tip selector 
         // to reflect the new tip amount 
@@ -107,18 +106,21 @@ class PercentageViewController: UIViewController {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let newFloatValue : Float = Float(tipEditorControl.value) / 100.0
+        
         if (tipSelectorControl.selectedSegmentIndex == 0)
         {
-            userDefaults.setFloat(newFloatValue, forKey: "low_tip")
+            
+            userDefaults.setFloat(round(newFloatValue*100)/100);, forKey:"low_tip")
         }
         else if (tipSelectorControl.selectedSegmentIndex == 1)
         {
-            userDefaults.setFloat(newFloatValue, forKey: "med_tip")
+            
+            userDefaults.setFloat(round(newFloatValue*100)/100);, forKey:"med_tip")
 
         }
         else if (tipSelectorControl.selectedSegmentIndex == 2)
         {
-            userDefaults.setFloat(newFloatValue, forKey: "high_tip")
+            userDefaults.setFloat(round(newFloatValue*100)/100);, forKey:"high_tip")
         }
     }
     /*

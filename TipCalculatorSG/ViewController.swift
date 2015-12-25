@@ -145,7 +145,7 @@ class ViewController: UIViewController {
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        var tipPercentages = [0.15, 0.2, 0.25]
+        var tipPercentages = [0.15, 0.20, 0.25]
         
         
         
