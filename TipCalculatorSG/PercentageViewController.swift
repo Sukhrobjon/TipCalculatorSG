@@ -43,9 +43,9 @@ class PercentageViewController: UIViewController {
         print("\(medTip)")
         print("\(highTip)")
         
-        let lowTitle = Int(lowTip * 100)
-        let medTitle = Int(medTip * 100)
-        let highTitle = Int(highTip * 100)
+        let lowTitle = roundf(lowTip * 100)
+        let medTitle = roundf(medTip * 100)
+        let highTitle = roundf(highTip * 100)
         
         //TODO: update the tipSelectorControl with the default tip values
         
@@ -99,28 +99,26 @@ class PercentageViewController: UIViewController {
         // the tip editor is tipEditorControl.value....
         // the tip selector is tipSelectorControl.text
         
-        let newTitle = "\(Int(tipEditorControl.value))%"
+        let newTitle = "\(roundf(tipEditorControl.value))%"
         tipSelectorControl.setTitle(newTitle, forSegmentAtIndex: tipSelectorControl.selectedSegmentIndex)
         
         print(newTitle)
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        let newFloatValue : Float = Float(tipEditorControl.value) / 100.0
+        let newFloatValue : Float = roundf(tipEditorControl.value) / 100.0
         
         if (tipSelectorControl.selectedSegmentIndex == 0)
         {
-            
-            userDefaults.setFloat(round(newFloatValue*100)/100);, forKey:"low_tip")
+            userDefaults.setFloat(newFloatValue, forKey: "low_tip")
         }
         else if (tipSelectorControl.selectedSegmentIndex == 1)
         {
-            
-            userDefaults.setFloat(round(newFloatValue*100)/100);, forKey:"med_tip")
+            userDefaults.setFloat(newFloatValue, forKey: "med_tip")
 
         }
         else if (tipSelectorControl.selectedSegmentIndex == 2)
         {
-            userDefaults.setFloat(round(newFloatValue*100)/100);, forKey:"high_tip")
+            userDefaults.setFloat(newFloatValue, forKey: "high_tip")
         }
     }
     /*
