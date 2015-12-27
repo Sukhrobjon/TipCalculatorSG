@@ -8,25 +8,42 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     
+    @IBOutlet weak var billPicker: UIPickerView!
     @IBOutlet weak var FadeLabel: UILabel!
     @IBOutlet weak var FadeControl: UISegmentedControl!
+    
+    @IBOutlet weak var splitLabel: UILabel!
+    
     
     var lowTip: Float!
     var medTip: Float!
     var highTip: Float!
+    
+
+    let Guest = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    
+    var GuestNumb = 1
+    var splitAmount = Double(0.0)
+    var totalAmount = Double()
+    
+    
+    
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nil.
+        
+        billPicker.delegate = self
+        billPicker.dataSource = self
         
         self.FadeLabel.alpha = 0
         self.FadeControl.alpha = 1
@@ -35,6 +52,7 @@ class ViewController: UIViewController {
         
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        splitLabel.text = "$0.00"
         
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -42,6 +60,7 @@ class ViewController: UIViewController {
         tipLabel.text = defaults.stringForKey("savedTip")
         totalLabel.text = defaults.stringForKey("savedTotal")
         tipControl.selectedSegmentIndex = defaults.integerForKey("myPer")
+        splitLabel.text = defaults.stringForKey("saveslplit")
         billField.becomeFirstResponder()
         
         
@@ -59,17 +78,17 @@ class ViewController: UIViewController {
         
         //TODO: read the 3 tip values from the defaults
         
-        let lowTip = userDefaults.doubleForKey("low_tip")
-        let medTip = userDefaults.doubleForKey("med_tip")
-        let highTip = userDefaults.doubleForKey("high_tip")
+        let lowTip = userDefaults.floatForKey("low_tip")
+        let medTip = userDefaults.floatForKey("med_tip")
+        let highTip = userDefaults.floatForKey("high_tip")
         
         print("\(lowTip)")
         print("\(medTip)")
         print("\(highTip)")
         
-        let lowTitle = Int(lowTip * 100)
-        let medTitle = Int(medTip * 100)
-        let highTitle = Int(highTip * 100)
+        let lowTitle = roundf(lowTip * 100)
+        let medTitle = roundf(medTip * 100)
+        let highTitle = roundf(highTip * 100)
         
         //TODO: update the tipSelectorControl with the default tip values
         
@@ -95,11 +114,6 @@ class ViewController: UIViewController {
             
             //TO DO: call the values from the settengs page
             
-            
-            
-            
-
-            
         })
     
         
@@ -113,6 +127,7 @@ class ViewController: UIViewController {
         let myTip = tipLabel.text
         let myTotal = totalLabel.text
         let selectPer = tipControl.selectedSegmentIndex
+        let myslplit = splitLabel.text
 
     
         
@@ -120,9 +135,10 @@ class ViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(myTip, forKey: "savedTip")
         NSUserDefaults.standardUserDefaults().setObject(myTotal, forKey: "savedTotal")
         NSUserDefaults.standardUserDefaults().setObject(selectPer, forKey: "myPer")
+        NSUserDefaults.standardUserDefaults().setObject(myslplit, forKey: "savesplit")
         
         NSUserDefaults.standardUserDefaults().synchronize()
-//
+
         print("View will disappear")
     }
     
@@ -137,6 +153,25 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
         
     }
+    
+    // TO DO: helper func to operate pickerview
+    
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(Guest[row])
+    
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Guest.count
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+    
+        return 1
+    
+    }
+    
 
     
 
@@ -164,20 +199,48 @@ class ViewController: UIViewController {
         let billAmount = NSString(string: billField.text!).doubleValue
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
+        self.totalAmount = total
+        tipLabel.text = formatCurrency(tip)
+        totalLabel.text = formatCurrency(total)
+        
+        
         
         
         
         tipLabel.text = "$/(tip)"
         totalLabel.text = "$/(total)"
+        splitLabel.text = "$/(split)"
+        
         
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
+        splitLabel.text = String(format: "$%.2f", splitAmount)
         
         
     }
+    
+    
+    //helper function: format the currency amount
+    func formatCurrency(amount: Double) -> String {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        return formatter.stringFromNumber(amount as NSNumber)!
+    }
+    
+    
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
     }
+    
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        GuestNumb = Guest[row]
+        splitLabel.text = formatCurrency((totalAmount / Double(GuestNumb)))
+    
+        
+    
+    }
+    
 
 }
 
