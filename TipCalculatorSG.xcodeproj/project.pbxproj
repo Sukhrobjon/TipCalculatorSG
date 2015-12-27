@@ -15,6 +15,7 @@
 		BC7E754D1C127296001639BA /* TipCalculatorSGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E754C1C127296001639BA /* TipCalculatorSGTests.swift */; };
 		BC7E75581C127296001639BA /* TipCalculatorSGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E75571C127296001639BA /* TipCalculatorSGUITests.swift */; };
 		BCE33D661C1E811400156E10 /* PercentageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE33D651C1E811400156E10 /* PercentageViewController.swift */; };
+		BCE5A5E41C2E903800D6BFA9 /* blue-symbol-person-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE5A5E31C2E903800D6BFA9 /* blue-symbol-person-hi.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		BC7E75571C127296001639BA /* TipCalculatorSGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculatorSGUITests.swift; sourceTree = "<group>"; };
 		BC7E75591C127296001639BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCE33D651C1E811400156E10 /* PercentageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentageViewController.swift; sourceTree = "<group>"; };
+		BCE5A5E31C2E903800D6BFA9 /* blue-symbol-person-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blue-symbol-person-hi.png"; path = "../../../Downloads/blue-symbol-person-hi.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				BC7E753E1C127296001639BA /* Assets.xcassets */,
 				BCE33D651C1E811400156E10 /* PercentageViewController.swift */,
 				BC7E75401C127296001639BA /* LaunchScreen.storyboard */,
+				BCE5A5E31C2E903800D6BFA9 /* blue-symbol-person-hi.png */,
 				BC7E75431C127296001639BA /* Info.plist */,
 			);
 			path = TipCalculatorSG;
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7E75421C127296001639BA /* LaunchScreen.storyboard in Resources */,
+				BCE5A5E41C2E903800D6BFA9 /* blue-symbol-person-hi.png in Resources */,
 				BC7E753F1C127296001639BA /* Assets.xcassets in Resources */,
 				BC7E753D1C127296001639BA /* Main.storyboard in Resources */,
 			);
