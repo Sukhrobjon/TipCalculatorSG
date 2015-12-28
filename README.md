@@ -2,9 +2,9 @@
 
 **TipCalculatorSG** is a tip calculator application for iOS.
 
-Submitted by: **Sukhrobjon**
+Submitted by: **Sukhrobjon Golibboev**
 
-Time spent: **** hours spent in total
+Time spent: **30** hours spent in total
 
 ## User Stories
 
