@@ -22,9 +22,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var splitLabel: UILabel!
     
     
-    var lowTip: Float!
-    var medTip: Float!
-    var highTip: Float!
+    
+    //var lowTip: Float!
+    //var medTip: Float!
+    //var highTip: Float!
     
 
     let Guest = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -55,8 +56,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.FadeLabel.alpha = 0
         self.FadeControl.alpha = 1
         
-        
-        
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
         splitLabel.text = "$0.00"
@@ -86,9 +85,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         //TODO: read the 3 tip values from the defaults
         
-        let lowTip = userDefaults.floatForKey("low_tip")
-        let medTip = userDefaults.floatForKey("med_tip")
-        let highTip = userDefaults.floatForKey("high_tip")
+        var lowTip = userDefaults.floatForKey("low_tip")
+        var medTip = userDefaults.floatForKey("med_tip")
+        var highTip = userDefaults.floatForKey("high_tip")
+        
+        if (userDefaults.stringForKey("low_tip") == nil) { lowTip = 0.15 }
+        if (userDefaults.stringForKey("med_tip") == nil) { medTip = 0.20 }
+        if (userDefaults.stringForKey("high_tip") == nil) { highTip = 0.25 }
         
         print("\(lowTip)")
         print("\(medTip)")
