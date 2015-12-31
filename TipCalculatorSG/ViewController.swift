@@ -23,9 +23,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     
-    //var lowTip: Float!
-    //var medTip: Float!
-    //var highTip: Float!
     
 
     let Guest = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -147,6 +144,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         NSUserDefaults.standardUserDefaults().setObject(myTotal, forKey: "savedTotal")
         NSUserDefaults.standardUserDefaults().setObject(selectPer, forKey: "myPer")
         NSUserDefaults.standardUserDefaults().setObject(myslplit, forKey: "savesplit")
+        NSUserDefaults.standardUserDefaults().setObject(tipControl.selectedSegmentIndex, forKey: "selected_segment")
         
         NSUserDefaults.standardUserDefaults().synchronize()
 
@@ -300,6 +298,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         } else {
             print("third selected")
         }
+        
+        func selectSegment() {
+            var selectedSegment = NSUserDefaults.standardUserDefaults().stringForKey("selected_segment")
+            
+            if (selectedSegment == nil) { selectedSegment = "0" }
+            
+            tipControl.selectedSegmentIndex = Int(selectedSegment!)!
+        }
+
      }
     
     

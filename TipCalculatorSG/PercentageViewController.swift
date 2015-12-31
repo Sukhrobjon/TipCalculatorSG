@@ -29,6 +29,8 @@ class PercentageViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+       
+        
         //TODO: read from the user defaults for the 3 tip percentages
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -57,7 +59,13 @@ class PercentageViewController: UIViewController {
         tipSelectorControl.setTitle("\(medTitle)%", forSegmentAtIndex: 1)
         tipSelectorControl.setTitle("\(highTitle)%", forSegmentAtIndex: 2)
         
-        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        
+        NSUserDefaults.standardUserDefaults().setObject(tipSelectorControl.selectedSegmentIndex, forKey: "selected_segment")
+        
+//        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        
         
         print("view will appear")
     }
@@ -70,7 +78,9 @@ class PercentageViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-
+        NSUserDefaults.standardUserDefaults().setObject(tipSelectorControl.selectedSegmentIndex, forKey: "selected_segment")
+        
+    
         
         print("view will disappear")
     }
@@ -124,6 +134,14 @@ class PercentageViewController: UIViewController {
         else if (tipSelectorControl.selectedSegmentIndex == 2)
         {
             userDefaults.setFloat(newFloatValue, forKey: "high_tip")
+        }
+        
+        func selectSegment() {
+            var selectedSegment = NSUserDefaults.standardUserDefaults().stringForKey("selected_segment")
+            
+            if (selectedSegment == nil) { selectedSegment = "0" }
+            
+            tipSelectorControl.selectedSegmentIndex = Int(selectedSegment!)!
         }
     }
     /*
