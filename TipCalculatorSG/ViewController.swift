@@ -27,14 +27,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var highTip: Float!
     
 
-    let Guest = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    let Guest = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     
-    var GuestNumb = 1
+    var numGuests = 1
+    var total: Double = 0.0
     var splitAmount = Double(0.0)
     var totalAmount = Double()
+    var tipPercentage = 0.0
+    var tipPercentages = [0.0]
+    // var split = Double(0.0)
+    var price = 123.00
+    var percentage = 0.12789
     
     
     
+
 
     
     
@@ -72,6 +79,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        updateOfCalculation()
        
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -178,6 +186,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     @IBAction func onEditingChanged(sender: AnyObject) {
         
+        updateOfCalculation()
+        
+        
+    }
+    
+    func updateOfCalculation(){
         let defaults = NSUserDefaults.standardUserDefaults()
         
         var tipPercentages = [0.15, 0.20, 0.25]
@@ -199,32 +213,40 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let billAmount = NSString(string: billField.text!).doubleValue
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
+        let split = total / Double(numGuests)
         self.totalAmount = total
         tipLabel.text = formatCurrency(tip)
         totalLabel.text = formatCurrency(total)
         
         
+        self.total = total
         
-        
-        
-        tipLabel.text = "$/(tip)"
-        totalLabel.text = "$/(total)"
-        splitLabel.text = "$/(split)"
+        tipLabel.text = "$\(tip)"
+        totalLabel.text = "$\(total)"
+        splitLabel.text = "$\(total/Double(self.numGuests))"
         
         
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
-        splitLabel.text = String(format: "$%.2f", splitAmount)
-        
-        
+        splitLabel.text = String(format: "$%.2f", split)
     }
+    
     
     
     //helper function: format the currency amount
     func formatCurrency(amount: Double) -> String {
+        
         let formatter = NSNumberFormatter()
         formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        
+        
+        
+        formatter.numberStyle = .CurrencyStyle
+        print(formatter.stringFromNumber(price)) // "$123.44"
+        
         return formatter.stringFromNumber(amount as NSNumber)!
+        
+        
     }
     
     
@@ -233,14 +255,41 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        GuestNumb = Guest[row]
-        splitLabel.text = formatCurrency((totalAmount / Double(GuestNumb)))
     
-        
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let numGuests = row + 1
+        self.numGuests = numGuests
+        updateGuestAmount(Double(self.numGuests))
+        splitLabel.text = formatCurrency((totalAmount / Double(numGuests)))
     
     }
     
+    func updateGuestAmount(numGuests: Double) {
+        splitLabel.text = "$\(self.total/Double(self.numGuests))"
+        splitLabel.text = formatCurrency((totalAmount / Double(numGuests)))
+        
+    }
+    
 
+    @IBAction func onSegmentedControlChanged(sender: AnyObject) {
+        
+        let formatter = NSNumberFormatter()
+            formatter.numberStyle = NSNumberFormatterStyle.PercentStyle
+            print(formatter.stringFromNumber(percentage as NSNumber)! )
+            // should show percent formatted
+        
+        if sender.selectedSegmentIndex == 0 {
+            //assign percent selected to the instance variable
+            //update the labels
+            self.tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
+        } else if sender.selectedSegmentIndex == 1 {
+            print("second selected")
+        } else {
+            print("third selected")
+        }
+     }
+    
+    
 }
 
