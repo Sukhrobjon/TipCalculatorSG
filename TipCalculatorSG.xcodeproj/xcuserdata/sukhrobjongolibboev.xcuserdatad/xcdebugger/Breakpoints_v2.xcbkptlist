@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipCalculatorSG/PercentageViewController.swift"
-            timestampString = "472952858.557229"
+            timestampString = "473229489.880824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "tipEditorChanged(_:)"
             landmarkType = "5">
          </BreakpointContent>

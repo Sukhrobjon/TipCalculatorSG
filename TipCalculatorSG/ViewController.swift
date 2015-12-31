@@ -194,7 +194,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
     }
     
+    
+    
     func updateOfCalculation(){
+        
+        let currencyFormatter = NSNumberFormatter()
+        currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        currencyFormatter.locale = NSLocale.currentLocale()
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         
         var tipPercentages = [0.15, 0.20, 0.25]
@@ -224,14 +231,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         self.total = total
         
-        tipLabel.text = "$\(tip)"
-        totalLabel.text = "$\(total)"
-        splitLabel.text = "$\(total/Double(self.numGuests))"
+        //tipLabel.text = "$\(tip)"
+        //totalLabel.text = "$\(total)"
+        //splitLabel.text = "$\(total/Double(self.numGuests))"
+        //tipLabel.text = String(format: "$%.2f", tip)
+        //totalLabel.text = String(format: "$%.2f", total)
+        //splitLabel.text = String(format: "$%.2f", split)
+        tipLabel.text = currencyFormatter.stringFromNumber(tip)!
+        totalLabel.text = currencyFormatter.stringFromNumber(total)!
+        splitLabel.text = currencyFormatter.stringFromNumber(split)!
         
-        
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
-        splitLabel.text = String(format: "$%.2f", split)
     }
     
     
