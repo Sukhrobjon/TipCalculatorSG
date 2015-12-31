@@ -1,6 +1,6 @@
-# Pre-work - *TipCalculatorSG*
+# Pre-work - *iTip*
 
-**TipCalculatorSG** is a tip calculator application for iOS.
+**iTip** is a tip calculator application for iOS.
 
 Submitted by: **Sukhrobjon Golibboev**
 
